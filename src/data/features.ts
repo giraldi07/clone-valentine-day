@@ -19,36 +19,46 @@ export const features = [
       tap: { scale: 0.9 }
     }
   },
-  {
-    id: 'music',
-    icon: 'Music',
-    title: 'Music',
-    path: '/music',
+    {
+    id: 'card',
+    icon: 'Gift',
+    title: 'Gift for you',
+    path: '/closing',
     animation: {
-      hover: { scale: 1.1, rotate: 360 },
+      hover: { scale: 1.1, y: -10 },
       tap: { scale: 0.9 }
     }
   },
-  {
-    id: 'todo',
-    icon: 'CheckSquare',
-    title: 'Plans',
-    path: '/todo-list',
-    animation: {
-      hover: { scale: 1.1, rotateY: 180 },
-      tap: { scale: 0.9 }
-    }
-  },
-  {
-    id: 'games',
-    icon: 'Gamepad2', // Icon dari Lucide React
-    title: 'Mini Games',
-    path: '/games', // Path ke halaman Games.tsx
-    animation: {
-      hover: { scale: 1.1, rotate: 360 },
-      tap: { scale: 0.9 }
-    }
-  },
+  // {
+  //   id: 'music',
+  //   icon: 'Music',
+  //   title: 'Music',
+  //   path: '/music',
+  //   animation: {
+  //     hover: { scale: 1.1, rotate: 360 },
+  //     tap: { scale: 0.9 }
+  //   }
+  // },
+  // {
+  //   id: 'todo',
+  //   icon: 'CheckSquare',
+  //   title: 'Plans',
+  //   path: '/todo-list',
+  //   animation: {
+  //     hover: { scale: 1.1, rotateY: 180 },
+  //     tap: { scale: 0.9 }
+  //   }
+  // },
+  // {
+  //   id: 'games',
+  //   icon: 'Gamepad2', // Icon dari Lucide React
+  //   title: 'Mini Games',
+  //   path: '/games', // Path ke halaman Games.tsx
+  //   animation: {
+  //     hover: { scale: 1.1, rotate: 360 },
+  //     tap: { scale: 0.9 }
+  //   }
+  // },
   {
     id: 'letter',
     icon: 'Mail',

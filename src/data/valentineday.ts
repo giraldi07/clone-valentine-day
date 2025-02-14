@@ -1,1 +1,1 @@
-export const VALENTINE_DATE = '2026-02-14';
+export const VALENTINE_DATE = '2025-02-16';

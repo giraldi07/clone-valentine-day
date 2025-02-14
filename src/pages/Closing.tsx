@@ -22,7 +22,7 @@ function Closing() {
         />
       </video>
 
-      <div className="relative z-10 min-h-screen flex items-center justify-center">
+      <div className="relative z-5 min-h-screen flex items-center justify-center">
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}

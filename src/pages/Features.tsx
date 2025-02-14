@@ -88,6 +88,20 @@ function Features() {
                 return null;
               }
               
+              // Atur posisi x dan y berdasarkan indeks
+              let x = 0;
+              let y = 0;
+              
+              if (index === 0) {
+                x = -120; // Posisi kiri
+              } else if (index === 1) {
+                x = 120; // Posisi kanan
+              } else if (index === 2) {
+                y = -120; // Posisi atas
+              } else if (index === 3) {
+                y = 120; // Posisi bawah
+              }
+              
               return (
                 <motion.div
                   key={feature.id}
@@ -95,8 +109,8 @@ function Features() {
                   animate={{
                     scale: showFeatures ? 1 : 0,
                     opacity: showFeatures ? 1 : 0,
-                    x: showFeatures ? Math.cos((index * 2 * Math.PI) / features.length) * 120 : 0,
-                    y: showFeatures ? Math.sin((index * 2 * Math.PI) / features.length) * 120 : 0,
+                    x: showFeatures ? x : 0,
+                    y: showFeatures ? y : 0,
                   }}
                   transition={{ delay: index * 0.1, type: 'spring', stiffness: 100 }}
                   onClick={() => navigate(feature.path)}
@@ -117,7 +131,7 @@ function Features() {
           </div>
           {/* Countdown Timer */}
           <div className="mt-4" style={{ fontFamily: 'Lobster Two, cursive',}}>
-            <TimeCard time={timeSince} title="Sudah selama ini ya!" style="bg-blue-200 text-blue-800" />
+            <TimeCard time={timeSince} title="Sudah selama ini ya!" style="bg-pink-200 bg-opacity-75 text-pink-800" />
           </div>
         </div>
       </div>

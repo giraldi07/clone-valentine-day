@@ -42,14 +42,23 @@ function PhotoCard() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-center mt-8"
+          className="text-center mt-8 flex justify-center gap-4"
         >
+          {/* Tombol Back */}
           <button
+            onClick={() => navigate(-1)} // Kembali ke halaman sebelumnya
+            className="bg-gray-500 hover:bg-gray-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all"
+          >
+            Back
+          </button>
+
+          {/* Tombol Continue */}
+          {/* <button
             onClick={() => navigate('/todo-list')}
             className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all"
           >
             Continue
-          </button>
+          </button> */}
         </motion.div>
       </div>
     </motion.div>
