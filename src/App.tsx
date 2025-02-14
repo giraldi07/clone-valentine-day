@@ -13,6 +13,7 @@ import Closing from './pages/Closing';
 import Games from './pages/Games';
 import DateInput2 from './pages/DateInput2';
 import DaysOfLove from './pages/DaysOfLove';
+import MusicAudio from './assets/audio/music.mp3';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -43,7 +44,7 @@ function App() {
 
   useEffect(() => {
     sound.current = new Howl({
-      src: ['/src/assets/audio/music.mp3'],
+      src: [MusicAudio],
       loop: true,
       volume: volume,
       autoplay: true,
