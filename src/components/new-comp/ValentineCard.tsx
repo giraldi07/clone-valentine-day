@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
+import ImageVcard from '../../assets/images/foto/foto2.jpg';
 
 const ValentineCard: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const ValentineCard: React.FC = () => {
     >
       <div className="relative h-40 sm:h-52">
         <img
-          src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&auto=format&fit=crop&q=30"
+          src={ImageVcard}
           alt="Valentine"
           className="w-full h-full object-cover"
         />

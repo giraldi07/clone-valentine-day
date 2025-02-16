@@ -8,12 +8,18 @@ import CloudLImage from '../assets/images/cloudL.svg';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import BgAnimImage from '../assets/images/gif/blink-blink.gif';
 import CurvedText from '../components/new-comp/CurvedText';
+import HeartSpread from '../components/new-comp/HeartSpread'; // Impor komponen HeartSpread
+import { useState } from 'react'; // Impor useState
 
 function Opening() {
   const navigate = useNavigate();
+  const [showHearts, setShowHearts] = useState(false); // State untuk mengontrol tampilan HeartSpread
 
   const handleSlideSuccess = () => {
-    navigate('/date-input2');
+    setShowHearts(true); // Tampilkan efek HeartSpread
+    setTimeout(() => {
+      navigate('/date-input2'); // Navigasi setelah efek selesai
+    }, 2000); // Sesuaikan waktu dengan durasi efek HeartSpread
   };
 
   return (
@@ -23,7 +29,6 @@ function Opening() {
       exit={{ opacity: 0 }}
       className="h-screen max-w-full mx-auto bg-gradient-radial from-gray-100 from-30% to-gray-300 flex flex-col items-center justify-center relative overflow-hidden"
     >
-
       {/* Background Animasi */}
       <motion.div
         className="fixed inset-0 w-full h-full z-0"
@@ -78,7 +83,7 @@ function Opening() {
             fontFamily: 'League Spartan',
           }}
         >
-          <TypingEffect text="{Masukan Nama Disini}" speed={90} />
+          <TypingEffect text="Salsabila Putri Bonita" speed={90} />
         </motion.div>
 
         {/* Tombol Slide */}
@@ -91,9 +96,6 @@ function Opening() {
           <SlideToOpenButton onSlideSuccess={handleSlideSuccess} />
         </motion.div>
       </div>
-
-
-
 
       {/* Gambar Line Love L */}
       <motion.div
@@ -143,7 +145,8 @@ function Opening() {
         />
       </motion.div>
 
-
+      {/* Heart Spread Animation */}
+      <HeartSpread show={showHearts} />
     </motion.div>
   );
 }

@@ -30,7 +30,7 @@ const TypingEffect: React.FC<TypingEffectProps> = ({ text, speed = 100 }) => {
     }
   }, [currentIndex, text, speed, isDeleting]);
 
-  return <span className="text-blue-500 inline-block">{displayText}</span>;
+  return <span className="text-pink-700 inline-block">{displayText}</span>;
 };
 
 export default TypingEffect;

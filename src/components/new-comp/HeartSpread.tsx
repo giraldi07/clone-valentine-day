@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
 
@@ -9,6 +9,23 @@ interface HeartSpreadProps {
 const HeartSpread: React.FC<HeartSpreadProps> = ({ show }) => {
   // Jumlah hati yang lebih banyak
   const hearts = Array.from({ length: 500 }, (_, i) => i);
+
+  useEffect(() => {
+    if (show) {
+      const playSound = () => {
+        const audio = new Audio('/src/assets/audio/sweet-transition.mp3'); // Path suara
+        audio.volume = 0.3; // Volume lebih lembut
+        audio.play();
+      };
+
+      // Memutar beberapa suara dengan delay acak
+      const soundIntervals = hearts.slice(0, 10).map(() => {
+        return setTimeout(playSound, Math.random() * 2000);
+      });
+
+      return () => soundIntervals.forEach(clearTimeout);
+    }
+  }, [show]);
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden">

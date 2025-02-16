@@ -95,7 +95,6 @@ function Gallery() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               />
-
             </motion.div>
           ))}
         </div>
@@ -105,9 +104,9 @@ function Gallery() {
       <AnimatePresence>
         {selectedPhoto && (
           <motion.div
-            initial={{ y: -50, opacity: 0, scale: 0.8 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={{ y: 100, opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
             transition={{ type: "spring", stiffness: 120, damping: 10 }}
             className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center z-50 p-4"
           >
@@ -116,32 +115,29 @@ function Gallery() {
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
               transition={{ type: "spring", stiffness: 120, damping: 10 }}
-              className="bg-white rounded-lg shadow-lg max-w-[90vw] md:max-w-4xl w-full overflow-hidden relative flex flex-col md:flex-row"
+              className="bg-white rounded-lg shadow-lg max-w-[90vw] md:max-w-3xl w-full overflow-hidden relative flex flex-col"
             >
+              {/* Tombol Close */}
+              <button
+                onClick={closePhotoDetail}
+                className="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-full font-semibold shadow-lg transition-all text-sm"
+              >
+                ✕
+              </button>
+
               {/* Gambar Modal */}
-              <div className="w-full md:w-1/2 max-h-[80vh] flex justify-center items-center bg-gray-100 p-2">
+              <div className="w-full max-h-[80vh] flex justify-center items-center bg-gray-100 p-4">
                 <img
                   src={selectedPhoto.src}
                   alt={selectedPhoto.title}
-                  className="max-h-full w-auto object-contain rounded-md"
+                  className="max-h-full max-w-full object-contain rounded-md"
                 />
-              </div>
-
-              {/* Konten Modal */}
-              <div className="w-full md:w-1/2 p-4 md:p-6 flex flex-col justify-center overflow-auto">
-
-                {/* Tombol Close */}
-                <button
-                  onClick={closePhotoDetail}
-                  className="mt-auto bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all text-sm md:text-base"
-                >
-                  Close
-                </button>
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
 
     </motion.div>
   );

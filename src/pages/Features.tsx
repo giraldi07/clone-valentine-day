@@ -100,7 +100,7 @@ function Features() {
               fontFamily: 'Montserrat, sans-serif',
             }}
           >
-            Let's explore our love journey together
+            Press Heart Button
           </motion.p>
 
           <div className="flex justify-center z-30 items-center gap-6 md:gap-8 flex-wrap relative">

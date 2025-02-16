@@ -1,15 +1,50 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Heart, X } from 'lucide-react';
+import { Heart, X, Volume2, VolumeX } from 'lucide-react';
 import { motion } from 'framer-motion';
 import DotBackground from '../components/bg-animations/DotBackground';
 import pitaImage from '../assets/images/pita.svg';
 import data from '../data/love-letter/data.json';
+import bgMusic from '../assets/audio/runin-out.mp3'; // Pastikan file audio ada di direktori ini
 
 function LoveLetter() {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [volume, setVolume] = useState(0.5); // State untuk volume
   const navigate = useNavigate();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Inisialisasi Audio dan Autoplay
+  useEffect(() => {
+    audioRef.current = new Audio(bgMusic);
+    audioRef.current.loop = true;
+    audioRef.current.volume = volume; // Set volume awal
+    audioRef.current.play().catch(() => {
+      console.log("Autoplay dicegah oleh browser, user harus berinteraksi dulu.");
+    });
+
+    return () => {
+      audioRef.current?.pause();
+    };
+  }, []);
+
+  // Fungsi untuk mute/unmute musik
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  // Fungsi untuk mengatur volume
+  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseFloat(event.target.value);
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
+  };
 
   // Fungsi untuk kembali ke halaman sebelumnya
   const handleBack = () => {
@@ -65,7 +100,7 @@ function LoveLetter() {
                 {data.pengirim} 💓
               </p>
             </div>
-            
+
             {/* Foto dengan hover di desktop dan animasi looping di mobile */}
             <div 
               className="absolute bottom-4 right-4 w-20 h-20 sm:w-24 sm:h-24 cursor-pointer group"
@@ -75,14 +110,10 @@ function LoveLetter() {
                 src={data.foto} 
                 alt="Foto"
                 className="w-full h-full object-cover rounded-lg shadow-lg"
-                whileHover={{ scale: 1.1 }} // Efek hover untuk desktop
-                animate={{ 
-                  scale: [1, 1.05, 1], // Animasi looping untuk mobile
-                  opacity: [1, 0.8, 1]
-                }}
+                whileHover={{ scale: 1.1 }} 
+                animate={{ scale: [1, 1.05, 1], opacity: [1, 0.8, 1] }}
                 transition={{ duration: 1, repeat: Infinity }}
               />
-              {/* Text hover hanya muncul di desktop */}
               <div className="hidden sm:flex absolute inset-0 items-center justify-center bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <p className="text-white font-semibold text-xs sm:text-sm">See this</p>
               </div>
@@ -99,6 +130,25 @@ function LoveLetter() {
             </div>
           </motion.div>
         )}
+      </div>
+
+      {/* Floating Button untuk Kontrol Musik */}
+      <div className="fixed bottom-6 left-6 flex items-center gap-4 z-50">
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value={volume}
+          onChange={handleVolumeChange}
+          className="w-16 sm:w-24 h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
+        />
+        <button 
+          onClick={toggleMute}
+          className="bg-red-600 text-white p-2 sm:p-3 rounded-full shadow-lg hover:bg-red-700 transition-all"
+        >
+          {isMuted ? <VolumeX className="w-5 h-5 sm:w-6 sm:h-6" /> : <Volume2 className="w-5 h-5 sm:w-6 sm:h-6" />}
+        </button>
       </div>
 
       {/* Modal untuk melihat foto lebih besar */}

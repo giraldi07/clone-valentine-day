@@ -1,6 +1,5 @@
-// TimeCard.tsx
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 interface TimeCardProps {
   time: {
@@ -18,18 +17,37 @@ const TimeCard: React.FC<TimeCardProps> = ({ time, title, style }) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`shadow-lg rounded-xl p-4 sm:p-6 w-fit mx-auto ${style} hover:shadow-xl transition-shadow duration-300`}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`relative bg-white/80 border border-pink-300 shadow-2xl rounded-2xl p-6 sm:p-8 w-fit mx-auto
+        ${style} hover:shadow-pink-500/50 transition-all duration-500`}
     >
-      <h3 className="text-center text-xl sm:text-2xl font-bold mb-3 sm:mb-4">{title}</h3>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5">
+      {/* Hiasan Heart */}
+      <div className="absolute -top-4 -right-4 bg-pink-600 text-white text-xs px-3 py-1 rounded-full shadow-lg">
+        💖 Love Timer 💖
+      </div>
+
+      {/* Judul */}
+      <h3 className="text-center text-2xl sm:text-3xl font-semibold text-pink-700 drop-shadow-md">
+        {title}
+      </h3>
+      <p className="text-center text-sm sm:text-base text-gray-600 mt-2 italic">
+        Sejak 03 Juli 2023 💕✨
+      </p>
+
+      {/* Grid Waktu */}
+      <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
         {Object.entries(time).map(([key, value]) => (
           <div
             key={key}
-            className="flex flex-col items-center bg-white shadow-md rounded-lg p-3 sm:p-4 w-20 sm:w-24 hover:bg-gray-50 transition-colors duration-300"
+            className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-5 w-24 sm:w-28
+              hover:bg-gray-100 transition-all duration-300"
           >
-            <span className="text-2xl sm:text-3xl font-bold">{value}</span>
-            <span className="text-xs sm:text-sm text-gray-500 mt-1 capitalize">{key}</span>
+            <span className="text-3xl sm:text-4xl font-bold text-pink-700">
+              {value}
+            </span>
+            <span className="text-sm sm:text-base text-gray-500 mt-1 capitalize">
+              {key}
+            </span>
           </div>
         ))}
       </div>
