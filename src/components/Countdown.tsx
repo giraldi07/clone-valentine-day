@@ -52,15 +52,15 @@ const Countdown: React.FC<CountdownProps> = () => {
 
   return (
     <div
-      className="grid grid-cols-1 md:grid-cols-2 items-center text-center gap-4 sm:gap-6 md:gap-8 p-4"
+      className="grid grid-cols-1 md:grid-cols-1 items-center text-center gap-4 sm:gap-6 md:gap-8 p-4"
       style={{ fontFamily: 'Lobster Two, cursive' }}
     >
       <div className="max-w-[400px] w-full mx-auto">
         <TimeCard time={timeSince} title="Sudah Berjalan Selama" style="bg-gray-200 text-gray-800 flex flex-col justify-center" />
       </div>
-      <div className="max-w-[400px] w-full mx-auto">
+      {/* <div className="max-w-[400px] w-full mx-auto">
         <TimeCard time={timeUntilValentine} title="Menuju Hari Valentine" style="bg-pink-200 text-pink-800 flex flex-col justify-center" />
-      </div>
+      </div> */}
     </div>
   );
 };

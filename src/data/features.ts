@@ -1,7 +1,7 @@
 import cameraIcon from '../assets/images/icons/galery.svg';
 // import musicIcon from '../assets/images/icons/music.svg';
-import checkSquareIcon from '../assets/images/icons/todolist.svg';
-import gameIcon from '../assets/images/icons/game.svg';
+// import checkSquareIcon from '../assets/images/icons/todolist.svg';
+// import gameIcon from '../assets/images/icons/game.svg';
 import mailIcon from '../assets/images/icons/loveletter.svg';
 
 
@@ -37,26 +37,26 @@ export const features = [
   //     tap: { scale: 0.9 }
   //   }
   // },
-  {
-    id: 'todo',
-    icon: checkSquareIcon, // Path ke gambar ikon
-    title: 'Plans',
-    path: '/todo-list',
-    animation: {
-      hover: { scale: 1.1, rotateY: 180 },
-      tap: { scale: 0.9 }
-    }
-  },
-  {
-    id: 'games',
-    icon: gameIcon, // Path ke gambar ikon
-    title: 'Mini Games',
-    path: '/games',
-    animation: {
-      hover: { scale: 1.1, rotate: 360 },
-      tap: { scale: 0.9 }
-    }
-  },
+  // {
+  //   id: 'todo',
+  //   icon: checkSquareIcon, // Path ke gambar ikon
+  //   title: 'Plans',
+  //   path: '/todo-list',
+  //   animation: {
+  //     hover: { scale: 1.1, rotateY: 180 },
+  //     tap: { scale: 0.9 }
+  //   }
+  // },
+  // {
+  //   id: 'games',
+  //   icon: gameIcon, // Path ke gambar ikon
+  //   title: 'Mini Games',
+  //   path: '/games',
+  //   animation: {
+  //     hover: { scale: 1.1, rotate: 360 },
+  //     tap: { scale: 0.9 }
+  //   }
+  // },
   {
     id: 'letter',
     icon: mailIcon, // Path ke gambar ikon

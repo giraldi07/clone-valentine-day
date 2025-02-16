@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { features } from '../data/features';
@@ -7,6 +7,7 @@ import Decorations from '../components/Decorations';
 import TimeCard from '../components/new-comp/TimeCard';
 import BgAnimImage from '../assets/images/gif/blink-blink.gif';
 import featuresIcons from '../assets/images/icons/biglove.svg';
+import { CORRECT_DATE } from '../data/contstants';
 
 function Features() {
   const navigate = useNavigate();
@@ -16,12 +17,32 @@ function Features() {
     setShowFeatures(!showFeatures);
   };
 
-  const [timeSince] = useState({
-    days: 5,
-    hours: 12,
-    minutes: 30,
-    seconds: 45,
+  const [timeSince, setTimeSince] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
   });
+
+  useEffect(() => {
+    const startDate = new Date(CORRECT_DATE.split('-').reverse().join('-'));
+
+    const calculateTime = () => {
+      const now = new Date().getTime();
+      const elapsed = now - startDate.getTime();
+      setTimeSince({
+        days: Math.floor(elapsed / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((elapsed % (1000 * 60)) / 1000),
+      });
+    };
+
+    calculateTime();
+    const timer = setInterval(calculateTime, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <PageTransition>
@@ -137,6 +158,7 @@ function Features() {
           {/* Countdown Timer */}
           <div className="mt-4" style={{ fontFamily: 'Lobster Two, cursive' }}>
             <TimeCard time={timeSince} title="Sudah selama ini ya!" style="bg-pink-300 text-red-500" />
+            {/* <TimeCard time={timeUntilValentine} title="Menuju Hari Valentine" style="bg-pink-200 text-pink-800" /> */}
           </div>
         </div>
       </div>
@@ -145,3 +167,4 @@ function Features() {
 }
 
 export default Features;
+

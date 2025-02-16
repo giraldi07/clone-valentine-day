@@ -12,7 +12,7 @@ import BgAnimImage2 from '../assets/images/gif/flower.gif';
 import wrongSound from '../assets/audio/wrong.mp3';
 import successSound from '../assets/audio/success.mp3';
 
-const CORRECT_DATE = '10-02-2025';
+const CORRECT_DATE = '03-07-2023';
 
 const DateInput2: React.FC = () => {
   const [currentInput, setCurrentInput] = useState('');

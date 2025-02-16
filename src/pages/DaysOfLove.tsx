@@ -107,7 +107,7 @@ const DaysOfLove: React.FC = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5 }}
-          className="w-full mb-8">
+          className="w-full mb-8 z-40">
             <Countdown targetDate={targetDate} />
         </motion.div>
 
