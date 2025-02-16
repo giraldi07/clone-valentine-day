@@ -3,8 +3,10 @@ import { useLocation, Navigate, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Countdown from '../components/Countdown';
 import { Heart } from 'lucide-react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import catAnimation from "../assets/lottie-animations/cat.json";
+
 import BgAnimImage2 from '../assets/images/gif/flower.gif';
+import Lottie from 'lottie-react';
 
 
 const ribbonVariants = {
@@ -93,21 +95,17 @@ const DaysOfLove: React.FC = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 2 }}
-          className="w- mt-[-7%] max-w-[80%] sm:max-w-[60%] md:max-w-[50%] lg:max-w-[40%]"
-      >
-         <DotLottieReact
-            src="/src/assets/lottie-animations/cat.lottie"
-            loop
-            autoplay
-            className="w-full max-h-[200px] sm:max-h-[250px] md:max-h-[300px] h-auto"
-          />
+          className="w-full max-h-[200px] sm:max-h-[250px] md:max-h-[300px] h-[40px] z-0"
+      >  
+        <Lottie animationData={catAnimation} />
+
       </motion.div>
 
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5 }}
-          className="w-full mb-8 z-40">
+          className="w-full mt-[-5vw] mb-2 z-40">
             <Countdown targetDate={targetDate} />
         </motion.div>
 
@@ -115,8 +113,8 @@ const DaysOfLove: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 1.1 }}
-          className="text-base sm:text-lg text-pink-600 text-center mb-5"
-          style={{ fontFamily: 'Montserrat, sans-serif' }}
+          className="text-base sm:text-lg text-pink-600 text-center mt-[-2%] rounded-md bg-white/70 mb-5 z-30 shadow-lg shadow-black/30 p-4"
+          style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', }}
         >
           Every second with you is a treasure ❤️
         </motion.p>
