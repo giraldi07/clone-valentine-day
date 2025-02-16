@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
+import AudioTransition from '../../assets/audio/sweet-transition.mp3';
 
 interface HeartSpreadProps {
   show: boolean;
@@ -13,7 +14,7 @@ const HeartSpread: React.FC<HeartSpreadProps> = ({ show }) => {
   useEffect(() => {
     if (show) {
       const playSound = () => {
-        const audio = new Audio('/src/assets/audio/sweet-transition.mp3'); // Path suara
+        const audio = new Audio(AudioTransition); // Path suara
         audio.volume = 0.3; // Volume lebih lembut
         audio.play();
       };

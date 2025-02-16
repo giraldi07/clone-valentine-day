@@ -6,6 +6,7 @@ import DotBackground from '../components/bg-animations/DotBackground';
 import pitaImage from '../assets/images/pita.svg';
 import data from '../data/love-letter/data.json';
 import bgMusic from '../assets/audio/runin-out.mp3'; // Pastikan file audio ada di direktori ini
+import fotoLoveLetter from '../assets/images/foto/fotoloveletters.jpg';
 
 function LoveLetter() {
   const [isOpen, setIsOpen] = useState(false);
@@ -107,7 +108,7 @@ function LoveLetter() {
               onClick={() => setIsModalOpen(true)}
             >
               <motion.img 
-                src={data.foto} 
+                src={fotoLoveLetter} 
                 alt="Foto"
                 className="w-full h-full object-cover rounded-lg shadow-lg"
                 whileHover={{ scale: 1.1 }} 
@@ -162,7 +163,7 @@ function LoveLetter() {
               <X className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             <img 
-              src={data.foto} 
+              src={fotoLoveLetter} 
               alt="Foto"
               className="w-full h-auto rounded-lg shadow-lg"
             />

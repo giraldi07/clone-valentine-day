@@ -5,15 +5,27 @@ import pinIcon from '../assets/images/icons/pin.svg';
 import LeftLineBottom from '../assets/images/crawl-line.svg';
 import RightLineBottom from '../assets/images/heart-outline.svg';
 import BgAnimImage from '../assets/images/gif/flower.gif';
-import galleryData from '../data/gallery/data.json';
+import foto1 from '../assets/images/foto/foto1.jpg';
+import foto2 from '../assets/images/foto/foto2.jpg';
+import foto3 from '../assets/images/foto/foto3.jpg';
+import foto4 from '../assets/images/foto/foto4.jpg';
 
 function Gallery() {
+  // Data foto
+  const data = [
+    { src: foto1, title: "Summer" },
+    { src: foto2, title: "Birthday" },
+    { src: foto3, title: "Last Val" },
+    { src: foto4, title: "First Date" },
+  ];
+
   const navigate = useNavigate();
   const [photos, setPhotos] = useState<{ src: string; title: string }[]>([]);
   const [selectedPhoto, setSelectedPhoto] = useState<{ src: string; title: string } | null>(null);
 
+  // Inisialisasi photos dengan data
   useEffect(() => {
-    setPhotos(galleryData);
+    setPhotos(data);
   }, []);
 
   const openPhotoDetail = (photo: { src: string; title: string }) => {
@@ -137,8 +149,6 @@ function Gallery() {
           </motion.div>
         )}
       </AnimatePresence>
-
-
     </motion.div>
   );
 }
