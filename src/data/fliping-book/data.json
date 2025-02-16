@@ -1,0 +1,38 @@
+[
+  {
+    "type": "image",
+    "content": "https://via.placeholder.com/600x800?text=Page+1",
+    "caption": "Memories of Us"
+  },
+  {
+    "type": "text",
+    "content": "This is the beginning of our story. Every moment with you feels like a dream."
+  },
+  {
+    "type": "image",
+    "content": "https://via.placeholder.com/600x800?text=Page+2",
+    "caption": "Our First Adventure"
+  },
+  {
+    "type": "text",
+    "content": "We explored the world together, hand in hand. Every step was magical."
+  },
+  {
+    "type": "image",
+    "content": "https://via.placeholder.com/600x800?text=Page+3",
+    "caption": "Sunset Moments"
+  },
+  {
+    "type": "text",
+    "content": "Watching the sunset with you is my favorite part of the day."
+  },
+  {
+    "type": "image",
+    "content": "https://via.placeholder.com/600x800?text=Page+4",
+    "caption": "Forever and Always"
+  },
+  {
+    "type": "text",
+    "content": "No matter where life takes us, I'll always be by your side."
+  }
+]

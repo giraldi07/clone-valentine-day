@@ -1,7 +1,15 @@
+import cameraIcon from '../assets/images/icons/galery.svg';
+// import musicIcon from '../assets/images/icons/music.svg';
+import checkSquareIcon from '../assets/images/icons/todolist.svg';
+import gameIcon from '../assets/images/icons/game.svg';
+import mailIcon from '../assets/images/icons/loveletter.svg';
+
+
+
 export const features = [
   {
     id: 'gallery',
-    icon: 'Camera',
+    icon: cameraIcon, // Path ke gambar ikon
     title: 'Gallery',
     path: '/gallery',
     animation: {
@@ -9,29 +17,19 @@ export const features = [
       tap: { scale: 0.9 }
     }
   },
-  {
-    id: 'card',
-    icon: 'Heart',
-    title: 'Love Card',
-    path: '/photo-card',
-    animation: {
-      hover: { scale: 1.1, y: -10 },
-      tap: { scale: 0.9 }
-    }
-  },
-    {
-    id: 'card',
-    icon: 'Gift',
-    title: 'Gift for you',
-    path: '/closing',
-    animation: {
-      hover: { scale: 1.1, y: -10 },
-      tap: { scale: 0.9 }
-    }
-  },
+  // {
+  //   id: 'card',
+  //   icon: heartIcon, // Path ke gambar ikon
+  //   title: 'Love Card',
+  //   path: '/photo-card',
+  //   animation: {
+  //     hover: { scale: 1.1, y: -10 },
+  //     tap: { scale: 0.9 }
+  //   }
+  // },
   // {
   //   id: 'music',
-  //   icon: 'Music',
+  //   icon: musicIcon, // Path ke gambar ikon
   //   title: 'Music',
   //   path: '/music',
   //   animation: {
@@ -39,29 +37,29 @@ export const features = [
   //     tap: { scale: 0.9 }
   //   }
   // },
-  // {
-  //   id: 'todo',
-  //   icon: 'CheckSquare',
-  //   title: 'Plans',
-  //   path: '/todo-list',
-  //   animation: {
-  //     hover: { scale: 1.1, rotateY: 180 },
-  //     tap: { scale: 0.9 }
-  //   }
-  // },
-  // {
-  //   id: 'games',
-  //   icon: 'Gamepad2', // Icon dari Lucide React
-  //   title: 'Mini Games',
-  //   path: '/games', // Path ke halaman Games.tsx
-  //   animation: {
-  //     hover: { scale: 1.1, rotate: 360 },
-  //     tap: { scale: 0.9 }
-  //   }
-  // },
+  {
+    id: 'todo',
+    icon: checkSquareIcon, // Path ke gambar ikon
+    title: 'Plans',
+    path: '/todo-list',
+    animation: {
+      hover: { scale: 1.1, rotateY: 180 },
+      tap: { scale: 0.9 }
+    }
+  },
+  {
+    id: 'games',
+    icon: gameIcon, // Path ke gambar ikon
+    title: 'Mini Games',
+    path: '/games',
+    animation: {
+      hover: { scale: 1.1, rotate: 360 },
+      tap: { scale: 0.9 }
+    }
+  },
   {
     id: 'letter',
-    icon: 'Mail',
+    icon: mailIcon, // Path ke gambar ikon
     title: 'Letter',
     path: '/love-letter',
     animation: {

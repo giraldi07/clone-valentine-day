@@ -1,112 +1,149 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import SlideToOpenButton from '../components/new-comp/SlideButton'; // Sesuaikan path sesuai struktur proyek Anda
+import SlideToOpenButton from '../components/new-comp/SlideButton';
 import TypingEffect from '../components/new-comp/TypingEffect';
-import ValentineIcons from '../components/new-comp/ValentineIconsAnimation';
-import BackgroundIconsAnimation from '../components/new-comp/BackgroundAnimations'; // Import komponen baru
-import CloudsImage from '../assets/images/clouds.svg';
-import LineLeftImage from '../assets/images/line-left.svg';
 import LineLoveImage from '../assets/images/line-love.svg';
+import CloudRImage from '../assets/images/cloudR.svg';
+import CloudLImage from '../assets/images/cloudL.svg';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import BgAnimImage from '../assets/images/gif/blink-blink.gif';
+import CurvedText from '../components/new-comp/CurvedText';
 
 function Opening() {
   const navigate = useNavigate();
 
-  // Fungsi yang akan dipanggil ketika tombol berhasil di-slide
   const handleSlideSuccess = () => {
     navigate('/date-input2');
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="h-screen max-w-full mx-auto bg-gradient-radial from-pink-100 from-20% to-gray-500 flex flex-col items-center justify-center relative"
+      className="h-screen max-w-full mx-auto bg-gradient-radial from-gray-100 from-30% to-gray-300 flex flex-col items-center justify-center relative overflow-hidden"
     >
-      {/* Tambahkan komponen BackgroundIconsAnimation di sini */}
-      <BackgroundIconsAnimation />
 
+      {/* Background Animasi */}
       <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 0.5, type: "spring" }}
-        className="mb-2 mt-[-10%]"
+        className="fixed inset-0 w-full h-full z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
       >
-        <ValentineIcons />
-      </motion.div>
-      
-      <motion.h1 
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.8 }}
-        className="text-4xl md:text-7xl font-bold text-red-600 mb-6 text-center"
-        style={{
-          fontFamily: 'Lobster Two, cursive',
-          transform: 'rotate(-5deg)',  // Menambahkan rotasi
-          letterSpacing: '0.1em',        // Menambahkan jarak antar huruf
-          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)' // Menambahkan bayangan teks
-        }}
-      >
-        This is for
-      </motion.h1>
-
-      <motion.p
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="text-3xl md:text-4xl h-4 text-red-400 mb-24 p-6 text-center"
-      >
-        <TypingEffect text="{Masukan Nama Disini}" speed={90} />
-      </motion.p>
-      
-      {/* Ganti tombol dengan komponen SlideToOpenButton */}
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1.5 }}
-      >
-        <SlideToOpenButton onSlideSuccess={handleSlideSuccess} />
-      </motion.div>
-
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1.9 }} 
-        className="absolute top-[-15vw] left-[-5vw] w-[50vw] h-auto" // Gunakan 20vw agar ukuran responsif
-      >
-        <img 
-          src={LineLeftImage} 
-          alt="Line Left"
-          className="w-full h-auto object-cover"
+        <img
+          src={BgAnimImage}
+          alt="Background Animation"
+          className="w-full h-full object-cover"
         />
+        {/* Overlay Semi-Transparan */}
+        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
       </motion.div>
 
+      <div className="flex flex-col mb-20 items-center justify-center h-screen z-50 relative">
+        {/* Animasi Lottie */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.8 }}
+          className="z-50 w-full max-w-[80%] sm:max-w-[60%] md:max-w-[50%] lg:max-w-[40%]"
+        >
+          <DotLottieReact
+            src="/src/assets/lottie-animations/red-line-love.json"
+            loop
+            autoplay
+            className="w-full max-h-[200px] sm:max-h-[250px] md:max-h-[300px] h-auto"
+          />
+        </motion.div>
+
+        {/* Judul */}
+        <motion.h1
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.8 }}
+          className="text-center mt-2 mb-4 md:mb-8 px-4 z-50"
+        >
+          <CurvedText />
+        </motion.h1>
+
+        {/* Teks Typing Effect */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="text-lg sm:text-2xl md:text-3xl mb-6 sm:mb-8 px-4 text-center w-full max-w-[80%] sm:max-w-[70%] md:max-w-[60%] z-50"
+          style={{
+            height: '100px',
+            fontWeight: 'bold',
+            fontFamily: 'League Spartan',
+          }}
+        >
+          <TypingEffect text="{Masukan Nama Disini}" speed={90} />
+        </motion.div>
+
+        {/* Tombol Slide */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="w-full max-w-[180px] sm:max-w-[200px] md:max-w-[220px] px-2 z-50"
+        >
+          <SlideToOpenButton onSlideSuccess={handleSlideSuccess} />
+        </motion.div>
+      </div>
+
+
+
+
+      {/* Gambar Line Love L */}
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 2 }} 
-        className="absolute bottom-0 right-0 w-[30vw] h-auto"
+        transition={{ delay: 1.9 }}
+        className="z-30"
       >
-        <img 
-          src={LineLoveImage} 
+        <img
+          src={LineLoveImage}
           alt="Line Love"
-          className="w-full h-auto object-cover"
+          className="absolute top-[-6vw] left-[-2vw] w-[20vw] md:w-[20vw] sm:w-[40vw] h-auto object-cover -rotate-45"
         />
       </motion.div>
 
-      {/* Menambahkan gambar awan di bawah */}
+      {/* Gambar Line Love R */}
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1.6 }} 
-        className="absolute bottom-0 left-0 right-0 w-full"
+        transition={{ delay: 2 }}
+        className="z-30"
       >
-        <img 
-          src={CloudsImage} 
-          alt="Clouds" 
-          className="w-full h-auto object-cover" 
+        <img
+          src={LineLoveImage}
+          alt="Line Love"
+          className="absolute top-[-6vw] right-[-2vw] w-[20vw] md:w-[20vw] sm:w-[40vw] h-auto object-cover scale-x-[-1] rotate-45"
         />
       </motion.div>
+
+      {/* Gambar Awan */}
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 1.6 }}
+        className="absolute bottom-0 left-0 right-0 w-full flex gap-0 z-10"
+      >
+        <img
+          src={CloudLImage}
+          alt="CloudL"
+          className="w-1/2 h-auto object-cover"
+        />
+
+        <img
+          src={CloudRImage}
+          alt="CloudR"
+          className="w-1/2 h-auto object-cover scale-x-[-1]"
+        />
+      </motion.div>
+
+
     </motion.div>
   );
 }

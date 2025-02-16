@@ -6,6 +6,7 @@ import HeartBar from '../components/new-comp/HeartBar';
 import SubmitButton from '../components/new-comp/SubmitButton';
 import ValentineCard from '../components/new-comp/ValentineCard';
 import HeartSpread from '../components/new-comp/HeartSpread';
+import BgAnimImage2 from '../assets/images/gif/flower.gif';
 
 // Import file suara
 import wrongSound from '../assets/audio/wrong.mp3';
@@ -20,6 +21,7 @@ const DateInput2: React.FC = () => {
   const [showHearts, setShowHearts] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [showValentineCard, setShowValentineCard] = useState(false); // State baru untuk mengontrol tampilan ValentineCard
   const navigate = useNavigate();
 
   const handleInputChange = (value: string) => {
@@ -33,10 +35,8 @@ const DateInput2: React.FC = () => {
       setIsExiting(true);
       new Audio(successSound).play(); // Play success sound
       setTimeout(() => {
-        navigate('/days-of-love', { 
-          state: { date: currentInput },
-        });
-      }, 3000);
+        setShowValentineCard(true); // Tampilkan ValentineCard setelah 1 detik
+      }, 1000);
     } else {
       setIsShaking(true);
       setIsError(true);
@@ -50,8 +50,31 @@ const DateInput2: React.FC = () => {
     }
   };
 
+  const handleContinue = () => {
+    navigate('/days-of-love', { 
+      state: { date: currentInput },
+    });
+  };
+
   return (
     <div className={`min-h-screen bg-gradient-to-br from-pink-100 to-red-50 p-4 sm:p-6 md:p-8 flex flex-col ${isError ? 'error-effect' : ''}`}>
+
+      {/* Background Animasi */}
+      <motion.div
+        className="fixed inset-0 w-full h-full z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+      >
+        <img
+          src={BgAnimImage2}
+          alt="Background Animation"
+          className="w-full h-full object-cover"
+        />
+        {/* Overlay Semi-Transparan */}
+        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+      </motion.div>
+
       <AnimatePresence>
         {!isExiting && (
           <motion.div
@@ -63,24 +86,21 @@ const DateInput2: React.FC = () => {
               x: isShaking ? [-5, 5, -5, 5, 0] : 0, // Efek getar horizontal
             }}
             transition={{ duration: 0.5, ease: 'easeInOut' }} // Transisi halus
-            className="max-w-4xl mx-auto w-full flex-grow flex flex-col"
+            className="max-w-4xl mx-auto w-full flex-grow flex flex-col z-50"
           >
             {/* Judul */}
-            <div className="text-center mb-6 sm:mb-8">
+            <div className="text-center mt-6 mb-6 sm:mb-8">
               <motion.h2
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 1 }}
                 className="text-3xl md:text-4xl font-bold text-red-600 mb-0 text-center"
                 style={{
-                  fontFamily: 'Lobster Two, cursive',
+                  fontFamily: 'Breathing',
                 }}
               >
                 Tanggal Jadian Kita?
               </motion.h2>
-              <p className="mt-6">
-                masukan 10-02-2025
-              </p>
             </div>
 
             {/* Input Tanggal */}
@@ -129,6 +149,36 @@ const DateInput2: React.FC = () => {
 
       {/* Heart Spread Animation */}
       <HeartSpread show={showHearts} />
+
+      {/* Overlay dan ValentineCard */}
+      <AnimatePresence>
+        {showValentineCard && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-pink-200 rounded-lg p-6 max-w-sm w-full"
+            >
+              <ValentineCard />
+              <button
+                onClick={handleContinue}
+                className="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition-colors"
+                style={{ fontFamily: 'Lobster Two, cursive' }}
+              >
+                Continue
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

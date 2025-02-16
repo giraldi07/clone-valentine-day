@@ -10,7 +10,7 @@ const HeartBar: React.FC<HeartBarProps> = ({ fillPercentage }) => {
   });
 
   return (
-    <div className="relative w-20 h-20 sm:h-64 bg-pink-300 border-2 border-red-500 rounded-full mx-auto overflow-hidden">
+    <div className="relative w-20 h-20 lg:h-64 bg-pink-300 border-2 border-red-500 rounded-full mx-auto overflow-hidden">
       <animated.div
         style={fillProps}
         className="absolute bottom-0 w-full bg-gradient-to-t from-red-500 to-pink-400"

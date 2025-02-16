@@ -19,6 +19,8 @@ export default {
         'bebas-neue': ['Bebas Neue', 'sans-serif'],
         'lobster-two': ['Lobster Two', 'cursive'],
         'montserrat': ['Montserrat', 'sans-serif'],
+        'league-spartan': ['League Spartan'],
+        'breathing-personal-use-400': ['Breathing'],
       }
     },
   },
