@@ -102,14 +102,16 @@ function LoveLetter() {
 
           {/* Foto (Belakang) */}
           <motion.div
-            className="absolute inset-0 bg-white rounded-lg shadow-xl overflow-hidden"
+            className="absolute inset-0 bg-white rounded-lg shadow-xl overflow-hidden flex items-center justify-center"
             style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden" }} // Rotasi 180 derajat
           >
-            <img 
-              src={data.foto} // Gunakan foto dari JSON
-              alt="Foto"
-              className="w-full h-full object-cover" 
-            />
+            <div className="w-full h-full flex items-center justify-center">
+              <img 
+                src={data.foto} // Gunakan foto dari JSON
+                alt="Foto"
+                className="w-full h-full object-cover md:object-contain" 
+              />
+            </div>
             
             {/* Tombol Back */}
             <div className="absolute bottom-4 w-full flex justify-center">

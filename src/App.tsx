@@ -1,27 +1,29 @@
-// App.tsx
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Opening from './pages/Opening';
-import Features from './pages/Features';
-import Gallery from './pages/Gallery';
-import PhotoCard from './pages/PhotoCard';
-import TodoList from './pages/TodoList';
-import LoveLetter from './pages/LoveLetter';
-import Closing from './pages/Closing';
-import Music from './pages/Music';
-import { AnimatePresence } from 'framer-motion';
-import Games from './pages/Games';
-import DateInput2 from './pages/DateInput2';
-import DaysOfLove from './pages/DaysOfLove';
-import Loading from './components/loading/Loading1';
-import Fliping from './pages/Fliping';
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import Opening from "./pages/Opening";
+import Features from "./pages/Features";
+import Gallery from "./pages/Gallery";
+import PhotoCard from "./pages/PhotoCard";
+import TodoList from "./pages/TodoList";
+import LoveLetter from "./pages/LoveLetter";
+import Closing from "./pages/Closing";
+import Music from "./pages/Music";
+import Games from "./pages/Games";
+import DateInput2 from "./pages/DateInput2";
+import DaysOfLove from "./pages/DaysOfLove";
+import Loading from "./components/loading/Loading1";
+import Fliping from "./pages/Fliping";
+import Maintenance from "./pages/maintanance/Maintanance"; // Import komponen Maintenance
 
 function AnimatedRoutes() {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
 
+  // Cek apakah maintenance aktif dari environment variable
+  const isMaintenance = import.meta.env.VITE_MAINTENANCE === "true";
+
   useEffect(() => {
-    // Simulasikan loading dengan setTimeout
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 3000); // 3 detik loading
@@ -33,6 +35,8 @@ function AnimatedRoutes() {
     <AnimatePresence mode="wait">
       {isLoading ? (
         <Loading />
+      ) : isMaintenance ? (
+        <Maintenance />
       ) : (
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Opening />} />
